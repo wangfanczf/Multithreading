@@ -1,0 +1,33 @@
+﻿<Window x:Class="Demo8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever" AutoReverse="False" SpeedRatio="1">
+            <DoubleAnimation Storyboard.TargetName="label" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360"/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Canvas>
+        <Label x:Name="label" Height="27" Width="145" Canvas.Left="326" Canvas.Top="204" Background="#FF64E6A0" RenderTransformOrigin="0.5,0.5" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button Content="Button" Canvas.Left="263" Canvas.Top="312" Click="Button_Click"/>
+        <ListBox x:Name="listBox" Height="100" Width="100" Canvas.Left="371" Canvas.Top="272"/>
+    </Canvas>
+</Window>

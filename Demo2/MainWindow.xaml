@@ -1,0 +1,37 @@
+﻿<Window x:Name="window" x:Class="Demo2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demo2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" RenderTransformOrigin="0.5,0.5">
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever" AutoReverse="False" SpeedRatio="1">
+            <DoubleAnimation Storyboard.TargetName="label" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" From="0" To="360"/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Canvas>
+        <Label x:Name="label" Height="27" Width="145" Canvas.Left="326" Canvas.Top="204" Background="#FF64E6A0" RenderTransformOrigin="0.5,0.5" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Button x:Name="buttonSleep" Content="Thread.Sleep" Canvas.Left="94" Canvas.Top="78" Click="buttonSleep_Click" Height="28" Width="95"/>
+        <Button x:Name="buttonDelay" Content="Task.Delay" Canvas.Left="226" Canvas.Top="78" Height="28" Width="100" Click="buttonDelay_Click"/>
+        <Button x:Name="buttonAwaitDelay" Content="await Task.Delay" Canvas.Left="371" Canvas.Top="78" Click="buttonAwaitDelay_Click" Height="28" Width="116"/>
+        <Button x:Name="buttonDelayWait" Content="Task.Delay.Wait" Canvas.Left="526" Canvas.Top="78" Height="28" Width="130" Click="buttonDelayWait_Click"/>
+        <Label Name="labelMessage" Content="Label" Canvas.Left="169" Canvas.Top="351"/>
+        <Button x:Name="buttonReset" Content="重置" Canvas.Left="259" Canvas.Top="351" Height="25" Width="57" Click="buttonReset_Click"/>
+    </Canvas>
+</Window>
